@@ -1,0 +1,11 @@
+# Enter the mass of the object in kilograms
+mass = float(input("Enter the object's mass in kilograms: "))
+
+# Enter the velocity of the object in meters per second
+velocity = float(input("Enter the object's velocity in meters per second: "))
+
+# Calculate the momentum using the formula: momentum = mass * velocity
+momentum = mass * velocity
+
+# Print the result
+print(f"The momentum of the object is: {momentum} kg·m/s")
