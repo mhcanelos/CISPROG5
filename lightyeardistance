@@ -1,0 +1,17 @@
+# Speed of light in meters per second
+speed_of_light = 3 * 10**8  # 3 * 10^8 meters/second
+
+# Number of seconds in a minute, minutes in an hour, hours in a day, and days in a year
+seconds_per_minute = 60
+minutes_per_hour = 60
+hours_per_day = 24
+days_per_year = 365
+
+# Calculate the number of seconds in a year
+seconds_per_year = seconds_per_minute * minutes_per_hour * hours_per_day * days_per_year
+
+# Calculate the distance light travels in one year (light-year)
+light_year = speed_of_light * seconds_per_year
+
+# Display the result
+print(f"The distance of one light-year is {light_year} meters.")
