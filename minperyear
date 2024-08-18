@@ -1,0 +1,12 @@
+# Define the number of minutes in an hour and hours in a day
+minutes_per_hour = 60
+hours_per_day = 24
+
+# Define the number of days in a year (considering a common year with 365 days)
+days_per_year = 365
+
+# Calculate the number of minutes in a year
+minutes_per_year = minutes_per_hour * hours_per_day * days_per_year
+
+# Print the result
+print(f"There are {minutes_per_year} minutes in a year.")
