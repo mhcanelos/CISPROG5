@@ -1,0 +1,18 @@
+import random
+
+def streak(coin_flips):
+    # Check if there is a streak of 6 heads or tails
+    return 'HHHHHH' in coin_flips or 'TTTTTT' in coin_flips
+
+num_streaks = 0
+
+for ex_num in range(10000):
+    # Generate a list of 100 'heads' or 'tails' values
+    coin_flips = ''.join(random.choice(['H', 'T']) for _ in range(100))
+
+    # Check if there is a streak of 6 heads or tails in a row
+    if streak(coin_flips):
+        num_streaks += 1
+
+# Calculate and print the chance of streaks
+print('Chance of streak: %s%%' % (numberOfStreaks / 100))
