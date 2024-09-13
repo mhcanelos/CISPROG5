@@ -1,0 +1,43 @@
+from collections import Counter
+
+def mean(numbers):
+    """Calculate the mean of a list of numbers."""
+    if not numbers:
+        return 0
+    return sum(numbers) / len(numbers)
+
+def median(numbers):
+    """Calculate the median of a list of numbers."""
+    if not numbers:
+        return 0
+    sorted_numbers = sorted(numbers)
+    n = len(sorted_numbers)
+    mid = n // 2
+    if n % 2 == 0:
+        # Average of the two middle numbers for even-length list
+        return (sorted_numbers[mid - 1] + sorted_numbers[mid]) / 2
+    else:
+        # Middle number for odd-length list
+        return sorted_numbers[mid]
+
+def mode(numbers):
+    """Calculate the mode of a list of numbers."""
+    if not numbers:
+        return 0
+    count = Counter(numbers)
+    max_freq = max(count.values())
+    # Extract all numbers that have the maximum frequency
+    mode_numbers = [num for num, freq in count.items() if freq == max_freq]
+    
+    # If there's more than one mode, return the smallest one
+    return min(mode_numbers) if len(mode_numbers) == 1 else mode_numbers
+
+def main():
+    test_list = [4, 1, 7, 2, 4, 2, 4]
+    print("List:", test_list)
+    print("Mean:", mean(test_list))
+    print("Median:", median(test_list))
+    print("Mode:", mode(test_list))
+
+if __name__ == "__main__":
+    main()
