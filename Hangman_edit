@@ -1,0 +1,76 @@
+import random
+
+# Lists of words for different categories
+categories = {
+    'Fruits': '''apple banana mango strawberry orange grape pineapple apricot lemon coconut watermelon cherry papaya berry peach lychee muskmelon''',
+    'Animals': '''cat dog elephant tiger lion bear wolf monkey giraffe zebra kangaroo horse dolphin whale penguin ostrich camel koala panda owl''',
+    'Sports': '''soccer basketball baseball tennis cricket rugby hockey golf swimming volleyball badminton tabletennis''',
+}
+
+def choose_category():
+    """Prompt the user to choose a category."""
+    print("Choose a category:")
+    for i, category in enumerate(categories.keys(), 1):
+        print(f"{i}. {category}")
+
+    choice = input("Enter the number of your choice: ")
+    category_names = list(categories.keys())
+
+    if choice.isdigit() and 1 <= int(choice) <= len(category_names):
+        return category_names[int(choice) - 1]
+    else:
+        print("Invalid choice. Please choose a number from the list.")
+        return choose_category()
+
+def hangman_game(word_list):
+    """Play the Hangman game with the given list of words."""
+    word = random.choice(word_list)
+    word_set = set(word)
+    letterGuessed = set()
+    chances = len(word) + 2
+
+    print('Guess the word! HINT: The word belongs to the chosen category')
+
+    while chances > 0:
+        # Display the current state of the word
+        display_word = ''.join([char if char in letterGuessed else '_' for char in word])
+        print(' '.join(display_word))
+
+        if set(display_word.replace(' ', '')) == word_set:
+            print("The word is:", word)
+            print('Congratulations, You won!')
+            break
+
+        guess = input('Enter a letter to guess: ').lower()
+
+        # Validate input
+        if not guess.isalpha():
+            print('Enter only a LETTER')
+            continue
+        elif len(guess) != 1:
+            print('Enter only a SINGLE letter')
+            continue
+        elif guess in letterGuessed:
+            print('You have already guessed that letter')
+            continue
+
+        # Add the guessed letter to the set of guessed letters
+        letterGuessed.add(guess)
+
+        if guess in word:
+            print(f'Good guess! "{guess}" is in the word.')
+        else:
+            print(f'Sorry, "{guess}" is not in the word.')
+            chances -= 1
+
+        print(f'Chances remaining: {chances}')
+
+    else:  # This else runs if the while loop is not broken (i.e., when chances run out)
+        print(f'You lost! The word was {word}')
+
+    print('Bye! Try again.')
+
+if __name__ == '__main__':
+    category = choose_category()
+    word_list = categories[category].split()
+    hangman_game(word_list)
